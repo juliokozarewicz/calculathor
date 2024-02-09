@@ -19,7 +19,10 @@ export default StyleSheet.create(
       borderWidth: 1,
       borderColor: colors.gray3,
 
-      color: colors.black,
+      color: colors.gray4,
+
+      textAlign: 'center',
+      justifyContent: 'center',
     },
 
   }

@@ -25,7 +25,7 @@ export function IndexScreen() {
     return (
 
         <View style={indexStyle.allcontent}>
-            <Buttons label={'ac'}/>
+            <Buttons label={'AC'}/>
             <Buttons label={'/'}/>
             <Buttons label={'7'}/>
             <Buttons label={'8'}/>
