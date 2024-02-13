@@ -117,6 +117,82 @@ export default StyleSheet.create(
       flex: 1,      
 
       backgroundColor: colors.gray2,
+
+      alignItems: 'center',
+    },
+
+    displayhist: {
+
+      zIndex: 15,
+
+      width: '90%',
+
+      position: 'absolute',
+      bottom: 140,
+
+      fontSize: 14,
+      letterSpacing: 1,
+
+      textTransform: 'uppercase',
+
+      fontWeight: 'bold',
+
+      color: colors.gray4,
+      
+      textAlign: 'right'
+    },
+
+    equaldisplay: {
+
+      zIndex: 15,
+
+      width: '90%',
+
+      position: 'absolute',
+      bottom: 88,
+
+      fontSize: 40,
+      letterSpacing: 1,
+
+      textTransform: 'uppercase',
+
+      fontWeight: 'bold',
+
+      color: colors.purple,
+
+      textAlign: 'right',
+    },
+
+    resultDisplay: {
+
+      zIndex: 15,
+
+      width: '90%',
+
+      position: 'absolute',
+      bottom: 30,
+
+      fontSize: 45,
+      letterSpacing: 1,
+
+      textTransform: 'uppercase',
+
+      fontWeight: 'bold',
+
+      color: colors.black,
+
+      textAlign: 'right',
+    },
+
+    imghammer: {
+      zIndex: 10,
+  
+      position: 'absolute',
+      top: 25,
+      left: -20,
+
+      width: 250,
+      height: 250,
     },
 
   }

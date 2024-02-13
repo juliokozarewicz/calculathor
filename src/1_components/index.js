@@ -6,6 +6,7 @@ import {
     Text,
     TouchableOpacity,
     SafeAreaView,
+    Image,
 } from 'react-native';
 
 // import style sheet
@@ -34,7 +35,20 @@ export function IndexScreen() {
                 <Text style={indexStyle.txlogotop}>calculathor</Text>
             </View>
 
-                <View style={indexStyle.frameDisplay}></View>
+                <View style={indexStyle.frameDisplay}>
+                    <Text
+                        numberOfLines={4}
+                        style={indexStyle.displayhist}
+                    >
+                            250 + 300.8447 + 500 + 800
+                    </Text>
+
+                    <Text style={indexStyle.equaldisplay}>=</Text>
+
+                    <Text numberOfLines={1} style={indexStyle.resultDisplay}>1580.8447</Text>
+
+                    <Image source={require('./3_img/hammer.png')} style={indexStyle.imghammer} />
+                </View>
 
                 <View style={indexStyle.keyboard}>
 
