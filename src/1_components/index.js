@@ -50,7 +50,6 @@ export function IndexScreen() {
                     <Buttons label={'5'}/>
                     <Buttons label={'6'}/>
                     <Buttons label={'+'}/>
-            
 
                     <View style={indexStyle.framebottom}>
 
