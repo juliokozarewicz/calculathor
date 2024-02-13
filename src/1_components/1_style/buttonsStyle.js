@@ -10,7 +10,7 @@ export default StyleSheet.create(
 
     button: {
       fontSize: 30,
-      height: Dimensions.get('window').width /3.5,
+      height: Dimensions.get('window').width /4,
       width: Dimensions.get('window').width /4,
       padding: 20,
 
@@ -19,7 +19,7 @@ export default StyleSheet.create(
       borderWidth: 0.5,
       borderColor: colors.gray3,
 
-      color: colors.gray4,
+      color: colors.gray3,
 
       textAlign: 'center',
       textAlignVertical: 'center',
@@ -27,7 +27,7 @@ export default StyleSheet.create(
 
     buttonGreen: {
       fontSize: 30,
-      height: Dimensions.get('window').width /3.5,
+      height: Dimensions.get('window').width /4,
       width: Dimensions.get('window').width /4,
       padding: 20,
 
@@ -44,7 +44,7 @@ export default StyleSheet.create(
 
     buttonPurple: {
       fontSize: 30,
-      height: Dimensions.get('window').width /3.5,
+      height: Dimensions.get('window').width /4,
       width: Dimensions.get('window').width /4,
       padding: 20,
 
@@ -53,7 +53,7 @@ export default StyleSheet.create(
       borderWidth: 0.5,
       borderColor: colors.gray3,
 
-      color: colors.purple,
+      color: colors.orange,
 
       textAlign: 'center',
       textAlignVertical: 'center',

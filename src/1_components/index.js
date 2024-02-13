@@ -1,9 +1,11 @@
 import React from 'react';
 
 import {
+    StatusBar,
     View,
     Text,
     TouchableOpacity,
+    SafeAreaView,
 } from 'react-native';
 
 // import style sheet
@@ -24,8 +26,13 @@ export function IndexScreen() {
     return (
 
         <>
+            <StatusBar barStyle="dark-content" backgroundColor={indexStyle.statusbar.backgroundColor} />
 
-            <View style={indexStyle.allcontent}>
+            <SafeAreaView style={indexStyle.allcontent}>
+
+            <View style={indexStyle.logotop}>
+                <Text style={indexStyle.txlogotop}>calculathor</Text>
+            </View>
 
                 <View style={indexStyle.frameDisplay}></View>
 
@@ -55,7 +62,7 @@ export function IndexScreen() {
                             <Buttons label={'0'}/>
                             <Buttons label={'%'}/>
                         </View>
-                        
+
                         <TouchableOpacity>
                             <Text style={indexStyle.buttonEqual}>=</Text>
                         </TouchableOpacity>
@@ -64,7 +71,7 @@ export function IndexScreen() {
 
                 </View>
 
-            </View>
+            </SafeAreaView>
 
         </>
         

@@ -66,15 +66,6 @@ export default StyleSheet.create(
       flexWrap: 'wrap',
     },
 
-    frameDisplay: {
-      position: 'relative',
-
-      width: '100%',
-      flex: 1,      
-
-      backgroundColor: colors.gray5,
-    },
-
     keyboard: {
       width: '100%',
       
@@ -83,7 +74,50 @@ export default StyleSheet.create(
       flexDirection: 'row',
 
       flexWrap: 'wrap',
-  },
+    },
+
+    statusbar: {
+      backgroundColor: colors.green,
+    },
+
+    logotop: {
+      zIndex: 101,
+
+      position: 'absolute',
+      top: 0,
+
+      paddingRight: 20,
+      paddingLeft: 20,
+      paddingTop: 0,
+      paddingBottom: 5,
+
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+
+      backgroundColor: colors.green,
+    },
+
+    txlogotop: {
+      fontFamily: 'title',
+
+      fontSize: 12,
+      letterSpacing: 1,
+
+      textTransform: 'uppercase',
+
+      fontWeight: 'bold',
+
+      color: colors.purple,
+    },
+
+    frameDisplay: {
+      position: 'relative',
+
+      width: '100%',
+      flex: 1,      
+
+      backgroundColor: colors.gray2,
+    },
 
   }
 
