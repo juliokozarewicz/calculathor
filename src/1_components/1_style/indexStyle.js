@@ -188,11 +188,13 @@ export default StyleSheet.create(
       zIndex: 10,
   
       position: 'absolute',
-      top: 25,
-      left: -20,
+      top: 30,
+      left: -35,
 
       width: 250,
       height: 250,
+
+      opacity: 0.7,
     },
 
   }

@@ -40,7 +40,7 @@ export function IndexScreen() {
                         numberOfLines={4}
                         style={indexStyle.displayhist}
                     >
-                            250 + 300.8447 + 500 + 800
+                        250 + 300.8447 + 500 + 800
                     </Text>
 
                     <Text style={indexStyle.equaldisplay}>=</Text>
