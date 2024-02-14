@@ -32,6 +32,9 @@ export function IndexScreen() {
             (n.toString() === '0') ? setDisplayValue('0') : 
             (n.toString() === '.') ? setDisplayValue('0.') : setDisplayValue(n)
 
+        } else if (n.toString() === '.' && displayValue.includes('.')) {
+            setDisplayValue(displayValue)
+
         } else {
             setDisplayValue(displayValue => displayValue + '' + n)
 
