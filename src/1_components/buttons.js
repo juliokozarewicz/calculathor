@@ -22,7 +22,15 @@ export default props => {
     return (
 
         <TouchableOpacity onPress={props.onClick}>
-            <Text style={ ( ['+', '-', '<'].includes(props.label) ) ? buttonsStyle.buttonGreen : ( ['x', '÷', 'AC'].includes(props.label) ) ? buttonsStyle.buttonPurple : buttonsStyle.button}>{props.label}</Text>
+
+            <Text style={
+                ( ['+', '-', '<'].includes(props.label) ) ? buttonsStyle.buttonGreen : 
+                ( ['x', '÷', 'AC'].includes(props.label) ) ? buttonsStyle.buttonPurple : 
+                buttonsStyle.button}
+            >
+                {props.label}
+            </Text>
+
         </TouchableOpacity>
         
     );

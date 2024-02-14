@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     StatusBar,
@@ -24,6 +24,26 @@ import Buttons from './buttons'
 // -------------------------------------------------------------------------------------
 export function IndexScreen() {
 
+    const [displayValue, setDisplayValue] = useState('0');
+
+    function addDigit(n) {
+
+        if (displayValue === '0') {
+            (n.toString() === '0') ? setDisplayValue('0') : 
+            (n.toString() === '.') ? setDisplayValue('0.') : setDisplayValue(n)
+
+        } else {
+            setDisplayValue(displayValue => displayValue + '' + n)
+
+        }
+    };
+
+    clearMemory = () => {
+        setDisplayValue('0')
+    };
+
+    setOperation = operation => {};
+
     return (
 
         <>
@@ -45,34 +65,34 @@ export function IndexScreen() {
 
                     <Text style={indexStyle.equaldisplay}>=</Text>
 
-                    <Text numberOfLines={1} style={indexStyle.resultDisplay}>1580.8447</Text>
+                    <Text numberOfLines={1} style={indexStyle.resultDisplay}>{displayValue}</Text>
 
                     <Image source={require('./3_img/hammer.png')} style={indexStyle.imghammer} />
                 </View>
 
                 <View style={indexStyle.keyboard}>
 
-                    <Buttons label={'AC'}/>
+                    <Buttons label={'AC'} onClick={() => clearMemory()} />
                     <Buttons label={'÷'}/>
                     <Buttons label={'x'}/>
                     <Buttons label={'<'}/>
-                    <Buttons label={'7'}/>
-                    <Buttons label={'8'}/>
-                    <Buttons label={'9'}/>
+                    <Buttons label={'7'} onClick={() => addDigit(7)} />
+                    <Buttons label={'8'} onClick={() => addDigit(8)} />
+                    <Buttons label={'9'} onClick={() => addDigit(9)} />
                     <Buttons label={'-'}/>
-                    <Buttons label={'4'}/>
-                    <Buttons label={'5'}/>
-                    <Buttons label={'6'}/>
+                    <Buttons label={'4'} onClick={() => addDigit(4)} />
+                    <Buttons label={'5'} onClick={() => addDigit(5)} />
+                    <Buttons label={'6'} onClick={() => addDigit(6)} />
                     <Buttons label={'+'}/>
 
                     <View style={indexStyle.framebottom}>
 
                         <View style={indexStyle.bottomnumbers}>
-                            <Buttons label={'1'}/>
-                            <Buttons label={'2'}/>
-                            <Buttons label={'3'}/>
-                            <Buttons label={'.'}/>
-                            <Buttons label={'0'}/>
+                            <Buttons label={'1'} onClick={() => addDigit(1)} />
+                            <Buttons label={'2'} onClick={() => addDigit(2)} />
+                            <Buttons label={'3'} onClick={() => addDigit(3)} />
+                            <Buttons label={'.'} onClick={() => addDigit('.')} />
+                            <Buttons label={'0'} onClick={() => addDigit(0)} />
                             <Buttons label={'%'}/>
                         </View>
 
