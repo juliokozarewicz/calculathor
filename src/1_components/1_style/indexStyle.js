@@ -19,6 +19,7 @@ export default StyleSheet.create(
     },
 
     buttonEqual: {
+      fontFamily: 'title',
 
       fontSize: 30,
 
@@ -130,6 +131,7 @@ export default StyleSheet.create(
       position: 'absolute',
       bottom: 170,
 
+      fontFamily: 'title',
       fontSize: 14,
       letterSpacing: 1,
 
@@ -151,6 +153,7 @@ export default StyleSheet.create(
       position: 'absolute',
       bottom: 105,
 
+      fontFamily: 'title',
       fontSize: 35,
       letterSpacing: 1,
 
@@ -172,6 +175,7 @@ export default StyleSheet.create(
       position: 'absolute',
       bottom: 30,
 
+      fontFamily: 'title',
       fontSize: 45,
       letterSpacing: 1,
 
@@ -222,6 +226,9 @@ export default StyleSheet.create(
       textAlign: 'left',
 
       paddingLeft: 20,
+
+      fontFamily: 'title',
+      fontSize: 13,
     },
 
     txtcloseerror: {
@@ -230,6 +237,7 @@ export default StyleSheet.create(
       flex: 1,
       color: 'black',
 
+      fontFamily: 'title',
       fontSize: 20,
 
       textAlign: 'center',

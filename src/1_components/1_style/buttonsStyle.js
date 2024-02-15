@@ -9,6 +9,7 @@ export default StyleSheet.create(
   {
 
     button: {
+      fontFamily: 'title',
       fontSize: 30,
       height: Dimensions.get('window').width /4,
       width: Dimensions.get('window').width /4,
@@ -26,6 +27,7 @@ export default StyleSheet.create(
     },
 
     buttonGreen: {
+      fontFamily: 'title',
       fontSize: 30,
       height: Dimensions.get('window').width /4,
       width: Dimensions.get('window').width /4,
@@ -43,6 +45,7 @@ export default StyleSheet.create(
     },
 
     buttonPurple: {
+      fontFamily: 'title',
       fontSize: 30,
       height: Dimensions.get('window').width /4,
       width: Dimensions.get('window').width /4,
