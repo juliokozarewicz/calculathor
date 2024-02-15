@@ -126,7 +126,7 @@ export default StyleSheet.create(
 
       zIndex: 15,
 
-      width: '90%',
+      width: '85%',
 
       position: 'absolute',
       bottom: 170,
@@ -148,7 +148,7 @@ export default StyleSheet.create(
 
       zIndex: 15,
 
-      width: '90%',
+      width: '85%',
 
       position: 'absolute',
       bottom: 105,
@@ -170,7 +170,7 @@ export default StyleSheet.create(
 
       zIndex: 15,
 
-      width: '90%',
+      width: '85%',
 
       position: 'absolute',
       bottom: 30,
@@ -192,8 +192,7 @@ export default StyleSheet.create(
       zIndex: 10,
   
       position: 'absolute',
-      top: 20,
-      left: -35,
+      top: 30,
 
       width: 250,
       height: 250,
