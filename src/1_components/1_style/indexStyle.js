@@ -128,7 +128,7 @@ export default StyleSheet.create(
       width: '90%',
 
       position: 'absolute',
-      bottom: 140,
+      bottom: 170,
 
       fontSize: 14,
       letterSpacing: 1,
@@ -149,9 +149,9 @@ export default StyleSheet.create(
       width: '90%',
 
       position: 'absolute',
-      bottom: 88,
+      bottom: 105,
 
-      fontSize: 40,
+      fontSize: 35,
       letterSpacing: 1,
 
       textTransform: 'uppercase',

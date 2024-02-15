@@ -25,6 +25,11 @@ import Buttons from './buttons'
 export function IndexScreen() {
 
     const [displayValue, setDisplayValue] = useState('0');
+    const [operator, setoperator] = useState('=');
+
+    clearMemory = () => {
+        setDisplayValue('0')
+    };
 
     function addDigit(n) {
 
@@ -41,11 +46,10 @@ export function IndexScreen() {
         }
     };
 
-    clearMemory = () => {
-        setDisplayValue('0')
+    function operatorChange(operator) {
+        setoperator(operator)
     };
 
-    setOperation = operation => {};
 
     return (
 
@@ -60,13 +64,13 @@ export function IndexScreen() {
 
                 <View style={indexStyle.frameDisplay}>
                     <Text
-                        numberOfLines={4}
+                        numberOfLines={3}
                         style={indexStyle.displayhist}
                     >
                         250 + 300.8447 + 500 + 800
                     </Text>
 
-                    <Text style={indexStyle.equaldisplay}>=</Text>
+                    <Text style={indexStyle.equaldisplay}>{operator}</Text>
 
                     <Text numberOfLines={1} style={indexStyle.resultDisplay}>{displayValue}</Text>
 
@@ -76,17 +80,17 @@ export function IndexScreen() {
                 <View style={indexStyle.keyboard}>
 
                     <Buttons label={'AC'} onClick={() => clearMemory()} />
-                    <Buttons label={'÷'}/>
-                    <Buttons label={'x'}/>
+                    <Buttons label={'÷'} onClick={() => operatorChange('÷')} />
+                    <Buttons label={'x'} onClick={() => operatorChange('x')} />
                     <Buttons label={'<'}/>
                     <Buttons label={'7'} onClick={() => addDigit(7)} />
                     <Buttons label={'8'} onClick={() => addDigit(8)} />
                     <Buttons label={'9'} onClick={() => addDigit(9)} />
-                    <Buttons label={'-'}/>
+                    <Buttons label={'-'} onClick={() => operatorChange('-')} />
                     <Buttons label={'4'} onClick={() => addDigit(4)} />
                     <Buttons label={'5'} onClick={() => addDigit(5)} />
                     <Buttons label={'6'} onClick={() => addDigit(6)} />
-                    <Buttons label={'+'}/>
+                    <Buttons label={'+'} onClick={() => operatorChange('+')} />
 
                     <View style={indexStyle.framebottom}>
 
