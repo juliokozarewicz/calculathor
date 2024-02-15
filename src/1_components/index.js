@@ -24,12 +24,26 @@ import Buttons from './buttons'
 // -------------------------------------------------------------------------------------
 export function IndexScreen() {
 
-    const [displayValue, setDisplayValue] = useState('0');
+    const [previval, setprevival] = useState('0');
     const [operator, setoperator] = useState('=');
+    const [displayValue, setDisplayValue] = useState('0');
 
-    clearMemory = () => {
+    function clearMemory() {
         setDisplayValue('0')
     };
+
+    function clearLast() {
+
+        let newValue = displayValue.toString().slice(0, -1);
+    
+        if (newValue === '0' || newValue === '') {
+            newValue = '0';
+        }
+    
+        setDisplayValue(newValue);
+    }
+    
+    
 
     function addDigit(n) {
 
@@ -49,6 +63,7 @@ export function IndexScreen() {
     function operatorChange(operator) {
         setoperator(operator)
     };
+    
 
 
     return (
@@ -67,7 +82,7 @@ export function IndexScreen() {
                         numberOfLines={3}
                         style={indexStyle.displayhist}
                     >
-                        250 + 300.8447 + 500 + 800
+                        {previval}
                     </Text>
 
                     <Text style={indexStyle.equaldisplay}>{operator}</Text>
@@ -82,7 +97,7 @@ export function IndexScreen() {
                     <Buttons label={'AC'} onClick={() => clearMemory()} />
                     <Buttons label={'÷'} onClick={() => operatorChange('÷')} />
                     <Buttons label={'x'} onClick={() => operatorChange('x')} />
-                    <Buttons label={'<'}/>
+                    <Buttons label={'<'} onClick={() => clearLast()} />
                     <Buttons label={'7'} onClick={() => addDigit(7)} />
                     <Buttons label={'8'} onClick={() => addDigit(8)} />
                     <Buttons label={'9'} onClick={() => addDigit(9)} />
