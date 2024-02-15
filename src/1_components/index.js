@@ -30,6 +30,7 @@ export function IndexScreen() {
 
     function clearMemory() {
         setDisplayValue('0')
+        setprevival('0')
     };
 
     function clearLast() {
