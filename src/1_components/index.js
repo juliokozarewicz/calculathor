@@ -24,13 +24,17 @@ import Buttons from './buttons'
 // -------------------------------------------------------------------------------------
 export function IndexScreen() {
 
+    const [active, setactive] = useState(false);
     const [previval, setprevival] = useState('0');
     const [operator, setoperator] = useState('=');
     const [displayValue, setDisplayValue] = useState('0');
 
+
     function clearMemory() {
         setDisplayValue('0')
+        setoperator('=')
         setprevival('0')
+        setactive(false)
     };
 
     function clearLast() {
@@ -43,29 +47,60 @@ export function IndexScreen() {
     
         setDisplayValue(newValue);
     }
-    
-    
 
     function addDigit(n) {
 
         if (displayValue === '0') {
             (n.toString() === '0') ? setDisplayValue('0') : 
-            (n.toString() === '.') ? setDisplayValue('0.') : setDisplayValue(n)
+            (n.toString() === '.') ? setDisplayValue('0.') :
+            setDisplayValue(n)
 
-        } else if (n.toString() === '.' && displayValue.includes('.')) {
-            setDisplayValue(displayValue)
+        } else if (n.toString() === '.' && displayValue.toString().includes('.')) {
+            setDisplayValue(displayValue.toString())
 
         } else {
             setDisplayValue(displayValue => displayValue + '' + n)
 
         }
+
     };
 
     function operatorChange(operator) {
+        setactive(true)
         setoperator(operator)
-    };
-    
 
+        if (previval.toString() === '0') {
+            setprevival(displayValue.toString())
+            setDisplayValue('0')
+        };
+
+    };
+
+    function basicOperations() {
+
+        if (operator === '+') {
+            setactive(false)
+            setprevival('0') ;
+            setDisplayValue( (parseFloat(previval) + parseFloat(displayValue)).toString() )
+
+        } else if (operator === '-') {
+            setactive(false)
+            setprevival('0') ;
+            setDisplayValue( (parseFloat(previval) - parseFloat(displayValue)).toString() )
+
+        } else if (operator === 'x') {
+            setactive(false)
+            setprevival('0') ;
+            setDisplayValue( (parseFloat(previval) * parseFloat(displayValue)).toString() )
+
+        } else if (operator === '÷') {
+            setactive(false)
+            setprevival('0') ;
+            setDisplayValue( (parseFloat(previval) / parseFloat(displayValue)).toString() )
+
+        };
+
+    };
 
     return (
 
@@ -81,12 +116,12 @@ export function IndexScreen() {
                 <View style={indexStyle.frameDisplay}>
                     <Text
                         numberOfLines={3}
-                        style={indexStyle.displayhist}
+                        style={active ? indexStyle.displayhist : null}
                     >
                         {previval}
                     </Text>
 
-                    <Text style={indexStyle.equaldisplay}>{operator}</Text>
+                    <Text style={active ? indexStyle.equaldisplay : null}>{operator}</Text>
 
                     <Text numberOfLines={1} style={indexStyle.resultDisplay}>{displayValue}</Text>
 
@@ -119,7 +154,7 @@ export function IndexScreen() {
                             <Buttons label={'%'}/>
                         </View>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={ () => {basicOperations()} } >
                             <Text style={indexStyle.buttonEqual}>=</Text>
                         </TouchableOpacity>
 
