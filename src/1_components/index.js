@@ -161,7 +161,7 @@ export function IndexScreen() {
 
                 <View style={indexStyle.keyboard}>
 
-                    <Buttons label={'AC'} onClick={() => clearMemory()} />
+                    <Buttons label={'AC'} onClick={() => { clearMemory(); seterror(false); } } />
                     <Buttons label={'÷'} onClick={() => operatorChange('÷')} />
                     <Buttons label={'x'} onClick={() => operatorChange('x')} />
                     <Buttons label={'<'} onClick={() => clearLast()} />
