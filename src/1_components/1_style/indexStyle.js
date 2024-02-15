@@ -197,6 +197,47 @@ export default StyleSheet.create(
       opacity: 0.7,
     },
 
+    errorframe: {
+      zIndex: 50,
+      position: 'absolute',
+      top: 40,
+
+      width: '90%',
+      height: 50,
+
+      backgroundColor: colors.orange,
+
+      alignItems: 'center',
+      justifyContent: 'center',
+
+      borderRadius: 12,
+
+      flexDirection: 'row',
+    },
+
+    txterror: {
+      width: '85%',
+      color: colors.white,
+
+      textAlign: 'left',
+
+      paddingLeft: 20,
+    },
+
+    txtcloseerror: {
+      height: '100%',
+
+      flex: 1,
+      color: 'black',
+
+      fontSize: 20,
+
+      textAlign: 'center',
+      textAlignVertical: 'center',
+
+      paddingBottom: 5,
+    },
+
   }
 
 );

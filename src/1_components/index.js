@@ -25,6 +25,10 @@ import Buttons from './buttons'
 export function IndexScreen() {
 
     const [active, setactive] = useState(false);
+
+    const [error, seterror] = useState(false);
+    const [errormsg, seterrormsg] = useState('');
+
     const [previval, setprevival] = useState('0');
     const [operator, setoperator] = useState('=');
     const [displayValue, setDisplayValue] = useState('0');
@@ -80,24 +84,40 @@ export function IndexScreen() {
 
         if (operator === '+') {
             setactive(false)
-            setprevival('0') ;
+            setprevival('0')
             setDisplayValue( (parseFloat(previval) + parseFloat(displayValue)).toString() )
+            setoperator('=')
 
         } else if (operator === '-') {
             setactive(false)
-            setprevival('0') ;
+            setprevival('0')
             setDisplayValue( (parseFloat(previval) - parseFloat(displayValue)).toString() )
+            setoperator('=')
 
         } else if (operator === 'x') {
             setactive(false)
-            setprevival('0') ;
+            setprevival('0')
             setDisplayValue( (parseFloat(previval) * parseFloat(displayValue)).toString() )
+            setoperator('=')
 
         } else if (operator === '÷') {
-            setactive(false)
-            setprevival('0') ;
-            setDisplayValue( (parseFloat(previval) / parseFloat(displayValue)).toString() )
 
+            if (displayValue === '0') {
+
+                seterror(true)
+                seterrormsg("You can't divide a number by zero.")
+                clearMemory()
+                setoperator('=')
+
+            } else {
+                setactive(false)
+                setprevival('0')
+                setDisplayValue( (parseFloat(previval) / parseFloat(displayValue)).toString() )
+                setoperator('=')
+            };
+
+        } else if (operator === '=') {
+            console.log('***********************')
         };
 
     };
@@ -109,9 +129,22 @@ export function IndexScreen() {
 
             <SafeAreaView style={indexStyle.allcontent}>
 
-            <View style={indexStyle.logotop}>
-                <Text style={indexStyle.txlogotop}>calculathor</Text>
-            </View>
+                {
+                
+                    error && (
+
+                        <TouchableOpacity style={indexStyle.errorframe} onPress={() => seterror(false)}>
+                            <Text numberOfLines={1} style={indexStyle.txterror}>{errormsg}</Text>
+                            <Text numberOfLines={1} style={indexStyle.txtcloseerror}>x</Text>
+                        </TouchableOpacity>
+
+                    )
+                
+                }
+
+                <View style={indexStyle.logotop}>
+                    <Text style={indexStyle.txlogotop}>calculathor</Text>
+                </View>
 
                 <View style={indexStyle.frameDisplay}>
                     <Text
