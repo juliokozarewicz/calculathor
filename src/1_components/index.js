@@ -116,8 +116,6 @@ export function IndexScreen() {
                 setoperator('=')
             };
 
-        } else if (operator === '=') {
-            console.log('***********************')
         };
 
     };
