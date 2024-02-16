@@ -81,44 +81,76 @@ export function IndexScreen() {
     };
 
     function basicOperations() {
-
-        if (operator === '+') {
-            setactive(false)
-            setprevival('0')
-            setDisplayValue( (parseFloat(previval) + parseFloat(displayValue)).toString() )
-            setoperator('=')
-
-        } else if (operator === '-') {
-            setactive(false)
-            setprevival('0')
-            setDisplayValue( (parseFloat(previval) - parseFloat(displayValue)).toString() )
-            setoperator('=')
-
-        } else if (operator === 'x') {
-            setactive(false)
-            setprevival('0')
-            setDisplayValue( (parseFloat(previval) * parseFloat(displayValue)).toString() )
-            setoperator('=')
-
-        } else if (operator === '÷') {
-
-            if (displayValue === '0') {
-
-                seterror(true)
-                seterrormsg("You can't divide a number by zero.")
-                clearMemory()
-                setoperator('=')
-
-            } else {
-                setactive(false)
-                setprevival('0')
-                setDisplayValue( (parseFloat(previval) / parseFloat(displayValue)).toString() )
-                setoperator('=')
-            };
-
-        };
-
-    };
+        switch (operator) {
+            case '+':
+                setactive(false);
+                setprevival('0');
+                setDisplayValue((parseFloat(previval) + parseFloat(displayValue)).toString());
+                setoperator('=');
+                break;
+            case '-':
+                setactive(false);
+                setprevival('0');
+                setDisplayValue((parseFloat(previval) - parseFloat(displayValue)).toString());
+                setoperator('=');
+                break;
+            case 'x':
+                setactive(false);
+                setprevival('0');
+                setDisplayValue((parseFloat(previval) * parseFloat(displayValue)).toString());
+                setoperator('=');
+                break;
+            case '÷':
+                if (displayValue === '0') {
+                    seterror(true);
+                    seterrormsg("You can't divide a number by zero.");
+                    clearMemory();
+                    setoperator('=');
+                } else {
+                    setactive(false);
+                    setprevival('0');
+                    setDisplayValue((parseFloat(previval) / parseFloat(displayValue)).toString());
+                    setoperator('=');
+                }
+                break;
+        }
+    }
+    
+    function percentage() {
+        switch (operator) {
+            case '+':
+                setactive(false);
+                setprevival('0');
+                setDisplayValue((parseFloat(previval) + (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
+                setoperator('=');
+                break;
+            case '-':
+                setactive(false);
+                setprevival('0');
+                setDisplayValue((parseFloat(previval) - (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
+                setoperator('=');
+                break;
+            case 'x':
+                setactive(false);
+                setprevival('0');
+                setDisplayValue((parseFloat(previval) * (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
+                setoperator('=');
+                break;
+            case '÷':
+                if (displayValue === '0') {
+                    seterror(true);
+                    seterrormsg("You can't divide a number by zero.");
+                    clearMemory();
+                    setoperator('=');
+                } else {
+                    setactive(false);
+                    setprevival('0');
+                    setDisplayValue((parseFloat(previval) / (parseFloat(displayValue) / 100 * parseFloat(previval))).toString());
+                    setoperator('=');
+                }
+                break;
+        }
+    }
 
     return (
 
@@ -128,7 +160,7 @@ export function IndexScreen() {
             <SafeAreaView style={indexStyle.allcontent}>
 
                 {
-                
+
                     error && (
 
                         <TouchableOpacity style={indexStyle.errorframe} onPress={() => seterror(false)}>
@@ -137,7 +169,7 @@ export function IndexScreen() {
                         </TouchableOpacity>
 
                     )
-                
+
                 }
 
                 <View style={indexStyle.logotop}>
@@ -182,7 +214,7 @@ export function IndexScreen() {
                             <Buttons label={'3'} onClick={() => addDigit(3)} />
                             <Buttons label={'.'} onClick={() => addDigit('.')} />
                             <Buttons label={'0'} onClick={() => addDigit(0)} />
-                            <Buttons label={'%'}/>
+                            <Buttons label={'%'} onClick={() => percentage()} />
                         </View>
 
                         <TouchableOpacity onPress={ () => {basicOperations()} } >
