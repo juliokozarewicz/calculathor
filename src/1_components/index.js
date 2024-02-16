@@ -69,87 +69,168 @@ export function IndexScreen() {
 
     };
 
-    function operatorChange(operator) {
+    function operatorChange(operatorPassed) {
         setactive(true)
-        setoperator(operator)
+        
+        setoperator(operatorPassed)
 
         if (previval.toString() === '0') {
             setprevival(displayValue.toString())
             setDisplayValue('0')
         };
 
+        basicOperations(operatorPassed, false)
+
     };
 
-    function basicOperations() {
-        switch (operator) {
+    function basicOperations(operatorPassed = null, equalPressed = false) {
+
+        switch (operatorPassed) {
+
             case '+':
-                setactive(false);
-                setprevival('0');
-                setDisplayValue((parseFloat(previval) + parseFloat(displayValue)).toString());
-                setoperator('=');
-                break;
-            case '-':
-                setactive(false);
-                setprevival('0');
-                setDisplayValue((parseFloat(previval) - parseFloat(displayValue)).toString());
-                setoperator('=');
-                break;
-            case 'x':
-                setactive(false);
-                setprevival('0');
-                setDisplayValue((parseFloat(previval) * parseFloat(displayValue)).toString());
-                setoperator('=');
-                break;
-            case '÷':
-                if (displayValue === '0') {
-                    seterror(true);
-                    seterrormsg("You can't divide a number by zero.");
-                    clearMemory();
-                    setoperator('=');
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
                 } else {
-                    setactive(false);
-                    setprevival('0');
-                    setDisplayValue((parseFloat(previval) / parseFloat(displayValue)).toString());
-                    setoperator('=');
-                }
-                break;
+                    equalPressed ? (
+                        setDisplayValue((parseFloat(previval) + parseFloat(displayValue)).toString()),
+                        setprevival('0'),
+                        setoperator('='),
+                        setactive(false)
+                    )
+                    : (
+                        setprevival((parseFloat(previval) + parseFloat(displayValue)).toString()),
+                        setDisplayValue('0')
+                    )
+                };
+            break;
+
+            case '-':
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
+                } else {
+                    equalPressed ? (
+                        setDisplayValue((parseFloat(previval) - parseFloat(displayValue)).toString()),
+                        setprevival('0'),
+                        setoperator('='),
+                        setactive(false)
+                    )
+                    : (
+                        setprevival((parseFloat(previval) - parseFloat(displayValue)).toString()),
+                        setDisplayValue('0')
+                    )
+                };
+            break;
+
+            case 'x':
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
+                } else {
+                    equalPressed ? (
+                        setDisplayValue((parseFloat(previval) * parseFloat(displayValue)).toString()),
+                        setprevival('0'),
+                        setoperator('='),
+                        setactive(false)
+                    )
+                    : (
+                        setprevival((parseFloat(previval) * parseFloat(displayValue)).toString()),
+                        setDisplayValue('0')
+                    )
+                };
+            break;
+
+            case '÷':
+            if (displayValue === '0') {
+                seterror(true);
+                seterrormsg("You can't divide a number by zero.");
+                clearMemory();
+            } else {
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
+                } else {
+                    equalPressed ? (
+                        setDisplayValue((parseFloat(previval) / parseFloat(displayValue)).toString()),
+                        setprevival('0'),
+                        setoperator('='),
+                        setactive(false)
+                    )
+                    : (
+                        setprevival((parseFloat(previval) / parseFloat(displayValue)).toString()),
+                        setDisplayValue('0')
+                    )
+                };
+            break;
+            }
+            break;
+
         }
+
     }
-    
-    function percentage() {
-        switch (operator) {
+
+    function percentage(operatorPassed=operator) {
+
+        switch (operatorPassed) {
+
             case '+':
-                setactive(false);
-                setprevival('0');
-                setDisplayValue((parseFloat(previval) + (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
-                setoperator('=');
-                break;
-            case '-':
-                setactive(false);
-                setprevival('0');
-                setDisplayValue((parseFloat(previval) - (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
-                setoperator('=');
-                break;
-            case 'x':
-                setactive(false);
-                setprevival('0');
-                setDisplayValue((parseFloat(previval) * (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
-                setoperator('=');
-                break;
-            case '÷':
-                if (displayValue === '0') {
-                    seterror(true);
-                    seterrormsg("You can't divide a number by zero.");
-                    clearMemory();
-                    setoperator('=');
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
                 } else {
-                    setactive(false);
-                    setprevival('0');
+                    setDisplayValue((parseFloat(previval) + (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
+                    setprevival('0')
+                    setoperator('=')
+                    setactive(false)
+                };
+            break;
+
+            case '-':
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
+                } else {
+                    setDisplayValue((parseFloat(previval) - (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
+                    setprevival('0')
+                    setoperator('=')
+                    setactive(false)
+                };
+            break;
+
+            case 'x':
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
+                } else {
+                    setDisplayValue((parseFloat(previval) * (parseFloat(displayValue) / 100) * parseFloat(previval)).toString());
+                    setprevival('0')
+                    setoperator('=')
+                    setactive(false)
+                };
+            break;
+
+            case '÷':
+            if (displayValue === '0') {
+                seterror(true);
+                seterrormsg("You can't divide a number by zero.");
+                clearMemory();
+            } else {
+                if (previval === '0') {
+                    setprevival(displayValue);
+                    setDisplayValue('0');
+                } else {
                     setDisplayValue((parseFloat(previval) / (parseFloat(displayValue) / 100 * parseFloat(previval))).toString());
-                    setoperator('=');
-                }
-                break;
+                    setprevival('0')
+                    setoperator('=')
+                    setactive(false)
+                };
+            break;
+            }
+            break;
+
         }
+
     }
 
     return (
@@ -194,7 +275,7 @@ export function IndexScreen() {
                 <View style={indexStyle.keyboard}>
 
                     <Buttons label={'AC'} onClick={() => { clearMemory(); seterror(false); } } />
-                    <Buttons label={'÷'} onClick={() => operatorChange('÷')} />
+                    <Buttons label={'÷'} onClick={() => operatorChange('÷') } />
                     <Buttons label={'x'} onClick={() => operatorChange('x')} />
                     <Buttons label={'<'} onClick={() => clearLast()} />
                     <Buttons label={'7'} onClick={() => addDigit(7)} />
@@ -204,7 +285,7 @@ export function IndexScreen() {
                     <Buttons label={'4'} onClick={() => addDigit(4)} />
                     <Buttons label={'5'} onClick={() => addDigit(5)} />
                     <Buttons label={'6'} onClick={() => addDigit(6)} />
-                    <Buttons label={'+'} onClick={() => operatorChange('+')} />
+                    <Buttons label={'+'} onClick={() => operatorChange('+') } />
 
                     <View style={indexStyle.framebottom}>
 
@@ -217,7 +298,7 @@ export function IndexScreen() {
                             <Buttons label={'%'} onClick={() => percentage()} />
                         </View>
 
-                        <TouchableOpacity onPress={ () => {basicOperations()} } >
+                        <TouchableOpacity onPress={ () => {basicOperations(operator, true)} } >
                             <Text style={indexStyle.buttonEqual}>=</Text>
                         </TouchableOpacity>
 
