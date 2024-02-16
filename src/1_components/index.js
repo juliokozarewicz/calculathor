@@ -79,7 +79,7 @@ export function IndexScreen() {
             setDisplayValue('0')
         };
 
-        basicOperations(operatorPassed, false)
+        basicOperations(operator, false)
 
     };
 
