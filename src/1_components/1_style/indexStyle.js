@@ -79,6 +79,7 @@ export default StyleSheet.create(
 
     statusbar: {
       backgroundColor: colors.green,
+      color: colors.purple,
     },
 
     logotop: {
@@ -245,6 +246,24 @@ export default StyleSheet.create(
       paddingBottom: 5,
     },
 
+    loadscreen: {
+      zIndex: 999,
+      position: 'absolute',
+      top: 0,
+
+      width: '100%',
+      height: '100%',
+
+      backgroundColor: colors.purple,
+
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    loadscreenlogo: {
+      width: 110,
+      height: 110,
+    },
   }
 
 );

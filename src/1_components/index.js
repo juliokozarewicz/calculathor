@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     StatusBar,
@@ -24,15 +24,20 @@ import Buttons from './buttons'
 // -------------------------------------------------------------------------------------
 export function IndexScreen() {
 
+    // display active
     const [active, setactive] = useState(false);
 
+    // error message
     const [error, seterror] = useState(false);
     const [errormsg, seterrormsg] = useState('');
 
+    // calculator
     const [previval, setprevival] = useState('0');
     const [operator, setoperator] = useState('=');
     const [displayValue, setDisplayValue] = useState('0');
 
+    // splash screen
+    const [loadscreen, setloadScreen] = useState(true);
 
     function clearMemory() {
         setDisplayValue('0')
@@ -233,12 +238,57 @@ export function IndexScreen() {
 
     }
 
+    function SplashScreen() {
+
+        return (
+
+            <>
+
+                {
+
+                    loadscreen ? (
+
+                        <View style={indexStyle.loadscreen}>
+
+                            <StatusBar barStyle="light-content" backgroundColor={ indexStyle.statusbar.color } />
+
+                            <Image
+                                source={require('./3_img/logo.png')}
+                                style={indexStyle.loadscreenlogo}
+                            />
+                        </View>
+
+                    )
+
+                    :
+                        null
+
+                }
+
+            </>
+
+        );
+
+    };
+
+    useEffect( () => {
+
+        const timer = setTimeout(() => {
+            setloadScreen(false);
+        }, 2500);
+
+        return () => clearTimeout(timer);
+
+    }, []);
+
     return (
 
         <>
             <StatusBar barStyle="dark-content" backgroundColor={indexStyle.statusbar.backgroundColor} />
 
             <SafeAreaView style={indexStyle.allcontent}>
+
+                <SplashScreen/>
 
                 {
 
